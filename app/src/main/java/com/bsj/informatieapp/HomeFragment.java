@@ -18,21 +18,23 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-        ListView newsView = (ListView) v.findViewById(R.id.NewsListView);
+//        ListView newsView = (ListView) v.findViewById(R.id.NewsListView);
 
-        ArrayList<News> newsList = new ArrayList<>();
-        newsList.add(new News("nieuws_afbeelding",
-                "Aantal misdrijven stijgt weer: zo crimineel is jouw buurt",
-                "https://www.telegraaf.nl/nieuws/1730275666/aantal-misdrijven-stijgt-weer-zo-crimineel-is-jouw-buurt",
-                "Telegraaf"));
+//        ArrayList<News> newsList = new ArrayList<>();
+//        newsList.add(new News("nieuws_afbeelding",
+//                "Aantal misdrijven stijgt weer: zo crimineel is jouw buurt",
+//                "https://www.telegraaf.nl/nieuws/1730275666/aantal-misdrijven-stijgt-weer-zo-crimineel-is-jouw-buurt",
+//                "Telegraaf"));
+//
+//        newsList.add(new News("nieuws_afbeelding",
+//                "Aantal misdrijven stijgt weer: zo crimineel is jouw buurt 2",
+//                "https://www.telegraaf.nl/nieuws/1730275666/aantal-misdrijven-stijgt-weer-zo-crimineel-is-jouw-buurt",
+//                "Telegraaf"));
+//
+//        NewsListAdapter adapter = new NewsListAdapter(getContext(), R.layout.adapter_view_layout, newsList);
+//        newsView.setAdapter(adapter);
 
-        newsList.add(new News("nieuws_afbeelding",
-                "Aantal misdrijven stijgt weer: zo crimineel is jouw buurt 2",
-                "https://www.telegraaf.nl/nieuws/1730275666/aantal-misdrijven-stijgt-weer-zo-crimineel-is-jouw-buurt",
-                "Telegraaf"));
 
-        NewsListAdapter adapter = new NewsListAdapter(getContext(), R.layout.adapter_view_layout, newsList);
-        newsView.setAdapter(adapter);
 
         return v;
     }

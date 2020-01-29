@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         });
         queue.add(stringRequest);
 
+        ((MyApplication)getApplication()).setNewsManager(new NewsManager());
+
         // Open the start page
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).addToBackStack(null).commit();
 
