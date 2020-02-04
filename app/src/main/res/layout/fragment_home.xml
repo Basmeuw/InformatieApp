@@ -25,6 +25,13 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.4" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
@@ -38,7 +45,7 @@
 
 
         <View
-            android:id="@+id/view"
+            android:id="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="2dp"
             android:layout_marginStart="8dp"
@@ -47,32 +54,32 @@
             android:background="@android:color/darker_gray"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/newsLayoutHeader" />
+            app:layout_constraintTop_toBottomOf="@+id/home_newsHeader" />
 
         <android.support.constraint.Guideline
-            android:id="@+id/newsGuideline"
+            android:id="@+id/home_newsGuideline"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             app:layout_constraintGuide_percent="0.4" />
 
         <ImageView
-            android:id="@+id/newsLayout"
+            android:id="@+id/home_newsImage"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="16dp"
             android:adjustViewBounds="true"
-            app:layout_constraintBottom_toTopOf="@+id/newsLayoutReadMore"
-            app:layout_constraintEnd_toStartOf="@+id/newsGuideline"
+            app:layout_constraintBottom_toTopOf="@+id/home_newsReadMore"
+            app:layout_constraintEnd_toStartOf="@+id/home_newsGuideline"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
             app:srcCompat="@drawable/nieuws_afbeelding"
             tools:adjustViewBounds="true" />
 
         <TextView
-            android:id="@+id/newsLayoutHeader"
+            android:id="@+id/home_newsHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Nieuws"
@@ -82,19 +89,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/newsLayoutText"
+            android:id="@+id/home_newsText"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/nieuws_placeholder"
             android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/newsLayout"
+            app:layout_constraintBottom_toBottomOf="@+id/home_newsImage"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/newsGuideline"
-            app:layout_constraintTop_toTopOf="@+id/newsLayout" />
+            app:layout_constraintStart_toStartOf="@+id/home_newsGuideline"
+            app:layout_constraintTop_toTopOf="@+id/home_newsImage" />
 
         <Button
-            android:id="@+id/newsLayoutReadMore"
+            android:id="@+id/home_newsReadMore"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="8dp"
@@ -106,6 +114,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/home_newsSource"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Bron"
+            app:layout_constraintBottom_toBottomOf="@+id/home_newsText"
+            app:layout_constraintEnd_toEndOf="@+id/home_newsText" />
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
