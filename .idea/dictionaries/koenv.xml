@@ -1,17 +1,31 @@
 <component name="ProjectDictionaryState">
   <dictionary name="koenv">
     <words>
+      <w>afbeelding</w>
       <w>autoweg</w>
       <w>beschrijving</w>
+      <w>bewolking</w>
+      <w>bewolkt</w>
+      <w>dagen</w>
       <w>einde</w>
       <w>eindesegment</w>
+      <w>gevoelstemperatuur</w>
+      <w>komend</w>
+      <w>komende</w>
+      <w>kompas</w>
+      <w>kompasnaald</w>
       <w>listview</w>
+      <w>neerslag</w>
       <w>oorzaak</w>
       <w>snelweg</w>
       <w>startsegment</w>
+      <w>temperatuur</w>
       <w>tijdsduur</w>
       <w>trafficlist</w>
+      <w>vandaag</w>
       <w>vertraging</w>
+      <w>vier</w>
+      <w>windsnelheid</w>
     </words>
   </dictionary>
 </component>

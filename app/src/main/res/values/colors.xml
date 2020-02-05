@@ -4,7 +4,7 @@
     <color name="colorPrimaryDark">#0e11b5</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorBlack">#000000</color>
-
+    <color name ="colorWhite">#FFFFFF</color>
     <color name="Autoweg">#FF0000</color>
     <color name="Snelweg">#FFFF00</color>
 
