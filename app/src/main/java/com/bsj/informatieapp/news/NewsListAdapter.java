@@ -1,4 +1,4 @@
-package com.bsj.informatieapp;
+package com.bsj.informatieapp.news;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -8,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.bsj.informatieapp.R;
+import com.bsj.informatieapp.news.News;
 
 import java.util.ArrayList;
 

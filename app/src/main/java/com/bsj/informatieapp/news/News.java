@@ -1,4 +1,4 @@
-package com.bsj.informatieapp;
+package com.bsj.informatieapp.news;
 
 public class News {
     private String imageFilename;

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/weather_afbeelding_temperatuur2"
+        android:id="@+id/weather_afbeelding_temperature_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="32dp"
@@ -27,7 +27,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/weather_afbeelding_neerslag2"
+        android:id="@+id/weather_rain_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
@@ -36,6 +36,6 @@
         android:background="@drawable/weather_afbeelding_neerslag"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weather_afbeelding_temperatuur2" />
+        app:layout_constraintTop_toBottomOf="@+id/weather_afbeelding_temperature_button" />
 
 </android.support.constraint.ConstraintLayout>

@@ -1,6 +1,8 @@
-package com.bsj.informatieapp;
+package com.bsj.informatieapp.news;
 
 import android.util.Log;
+
+import com.bsj.informatieapp.news.News;
 
 import java.util.ArrayList;
 

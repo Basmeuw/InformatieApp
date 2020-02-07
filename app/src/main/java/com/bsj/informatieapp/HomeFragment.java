@@ -8,14 +8,13 @@ import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 
-import java.util.ArrayList;
-import java.util.List;
+import com.bsj.informatieapp.events.EventsFragment;
+import com.bsj.informatieapp.news.NewsFragment;
+import com.bsj.informatieapp.news.NewsManager;
 
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
@@ -47,6 +46,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 // Load news page
                 fragmentManager.beginTransaction().replace(R.id.fragment_container, new NewsFragment()).addToBackStack(null).commit();
             }
+//            case R.id.home_eventsReadMore:{
+//                // Load events page
+//                fragmentManager.beginTransaction().replace(R.id.fragment_container, new EventsFragment()).addToBackStack(null).commit();
+//            }
         }
     }
 }

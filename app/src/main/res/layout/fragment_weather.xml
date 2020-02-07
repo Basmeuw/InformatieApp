@@ -5,6 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weather_komend" />
+
     <TextView
         android:id="@+id/weather_vandaag"
         android:layout_width="wrap_content"
@@ -46,13 +54,6 @@
         android:text="17.5 °C"
         app:layout_constraintStart_toEndOf="@+id/weather_afbeelding_vandaag"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
-
-    <ListView
-        android:layout_width="409dp"
-        android:layout_height="400dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weather_komend" />
 
     <TextView
         android:id="@+id/weather_komend"
@@ -161,6 +162,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.41" />
 
-    //https://medium.com/@onyekweretrust/how-to-create-a-simple-graph-in-android-6c484324a4c1
+    <!--https://medium.com/@onyekweretrust/how-to-create-a-simple-graph-in-android-6c484324a4c1-->
 
 </android.support.constraint.ConstraintLayout>

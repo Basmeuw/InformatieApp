@@ -1,4 +1,4 @@
-package com.bsj.informatieapp;
+package com.bsj.informatieapp.events;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -8,10 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-public class NewsFragment extends Fragment {
+import com.bsj.informatieapp.R;
+
+public class EventsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_news, container, false);
+        View v = inflater.inflate(R.layout.fragment_events, container, false);
+
+        return v;
     }
 }

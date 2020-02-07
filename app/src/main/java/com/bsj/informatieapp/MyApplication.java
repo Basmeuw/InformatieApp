@@ -2,6 +2,8 @@ package com.bsj.informatieapp;
 
 import android.app.Application;
 
+import com.bsj.informatieapp.news.NewsManager;
+
 public class MyApplication extends Application {
     private NewsManager newsManager;
 
