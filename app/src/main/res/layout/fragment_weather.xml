@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/weather_recyclerview_komend"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Vandaag"
+        android:text="@string/vandaag"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,138 +29,162 @@
         android:id="@+id/weather_windsnelheid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="6.1 m/s"
+        android:text="@string/_6_1_m_s"
+        app:layout_constraintBottom_toTopOf="@+id/weather_guideline2"
         app:layout_constraintEnd_toEndOf="@+id/weather_afbeelding_kompas"
-        app:layout_constraintStart_toStartOf="@+id/weather_afbeelding_kompas"
-        app:layout_constraintTop_toBottomOf="@+id/weather_afbeelding_kompas" />
+        app:layout_constraintStart_toStartOf="@+id/weather_afbeelding_kompas" />
 
     <TextView
         android:id="@+id/weather_bewolking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:text="60%"
+        android:text="@string/_60"
+        app:layout_constraintBottom_toTopOf="@+id/weather_guideline2"
         app:layout_constraintEnd_toEndOf="@+id/weather_afbeelding_bewolking"
-        app:layout_constraintStart_toStartOf="@+id/weather_afbeelding_bewolking"
-        app:layout_constraintTop_toBottomOf="@+id/weather_afbeelding_bewolking" />
+        app:layout_constraintStart_toStartOf="@+id/weather_afbeelding_bewolking" />
 
     <TextView
         android:id="@+id/weather_temperatuur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="17.5 °C"
-        app:layout_constraintStart_toEndOf="@+id/weather_afbeelding_vandaag"
-        app:layout_constraintTop_toTopOf="@+id/guideline3" />
+        android:text="@string/_17_7_c"
+        app:layout_constraintEnd_toEndOf="@+id/weather_gevoelstemperatuur"
+        app:layout_constraintStart_toStartOf="@+id/weather_guideline4"
+        app:layout_constraintTop_toTopOf="@+id/weather_guideline1" />
 
     <TextView
         android:id="@+id/weather_komend"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="Komende vier dagen"
+        android:text="@string/komende_vier_dagen"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline5" />
+        app:layout_constraintTop_toTopOf="@+id/weather_guideline3" />
 
     <ImageView
         android:id="@+id/weather_afbeelding_bewolking"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="32dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/weather_bewolking"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/weather_guideline5"
+        app:layout_constraintTop_toTopOf="@+id/weather_guideline1"
         app:srcCompat="@drawable/bewolkt" />
-
-    <ImageView
-        android:id="@+id/weather_afbeelding_vandaag"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline4"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
-        app:srcCompat="@drawable/weather_icon" />
 
     <TextView
         android:id="@+id/weather_gevoelstemperatuur"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="17.5 °C"
+        android:text="@string/_17_5_c"
         android:textColor="@color/colorPrimary"
-        app:layout_constraintStart_toEndOf="@+id/weather_afbeelding_vandaag"
+        app:layout_constraintStart_toStartOf="@+id/weather_guideline4"
         app:layout_constraintTop_toBottomOf="@+id/weather_temperatuur" />
 
     <ImageView
         android:id="@+id/weather_afbeelding_kompas"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginEnd="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/weather_afbeelding_bewolking"
-        app:layout_constraintStart_toEndOf="@+id/weather_temperatuur"
-        app:layout_constraintTop_toTopOf="@+id/guideline3"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/weather_windsnelheid"
+        app:layout_constraintEnd_toStartOf="@+id/weather_guideline5"
+        app:layout_constraintStart_toEndOf="@+id/weather_gevoelstemperatuur"
+        app:layout_constraintTop_toTopOf="@+id/weather_guideline1"
         app:srcCompat="@drawable/kompas" />
 
     <ImageView
         android:id="@+id/weather_afbeelding_kompasnaald"
-        android:layout_width="39.2dp"
-        android:layout_height="10.8dp"
+        android:layout_width="0dp"
+        android:layout_height="13dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
         app:layout_constraintBottom_toBottomOf="@+id/weather_afbeelding_kompas"
+        app:layout_constraintDimensionRatio="w,3:1"
         app:layout_constraintEnd_toEndOf="@+id/weather_afbeelding_kompas"
         app:layout_constraintStart_toStartOf="@+id/weather_afbeelding_kompas"
         app:layout_constraintTop_toTopOf="@+id/weather_afbeelding_kompas"
         app:srcCompat="@drawable/kompasnaald" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline3"
+        android:id="@+id/weather_guideline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.061559506" />
 
-    <android.support.constraint.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="top" />
-
-    <android.support.constraint.Guideline
-        android:id="@+id/guideline4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.22" />
-
     <Button
-        android:id="@+id/weather_afbeelding_temperatuur"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/weather_afbeelding_temperatuur"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
-
-    <Button
-        android:id="@+id/weather_afbeelding_neerslag"
+        android:id="@+id/weather_button_temperatuur"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="24dp"
-        android:background="@drawable/weather_afbeelding_neerslag"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/weather_afbeelding_temperatuur"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weather_afbeelding_temperatuur" />
+        app:layout_constraintTop_toTopOf="@+id/weather_guideline2" />
+
+    <Button
+        android:id="@+id/weather_button_neerslag"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/weather_afbeelding_neerslag"
+        app:layout_constraintBottom_toTopOf="@+id/weather_guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/weather_button_temperatuur"
+        app:layout_constraintVertical_bias="0.857" />
 
     <android.support.constraint.Guideline
-        android:id="@+id/guideline5"
+        android:id="@+id/weather_guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.41" />
+        app:layout_constraintGuide_percent="0.39671683" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/weather_guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.7128954" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/weather_guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3163017" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/weather_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.23392613" />
+
+    <ImageView
+        android:id="@+id/weather_afbeelding_vandaag"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
+        app:layout_constraintBottom_toTopOf="@+id/weather_guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/weather_guideline4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/weather_guideline1"
+        app:srcCompat="@drawable/weather_icon" />
 
     <!--https://medium.com/@onyekweretrust/how-to-create-a-simple-graph-in-android-6c484324a4c1-->
 
