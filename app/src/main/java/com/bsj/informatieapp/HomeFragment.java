@@ -29,7 +29,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
 
         // News handling
-        NewsManager newsManager = ((MyApplication) getActivity().getApplication()).getNewsManager();
+
         ImageView newsImage = v.findViewById(R.id.home_newsImage);
         TextView newsText = v.findViewById(R.id.home_newsText);
 

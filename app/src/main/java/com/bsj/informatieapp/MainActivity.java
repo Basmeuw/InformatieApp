@@ -48,11 +48,7 @@ public class MainActivity extends AppCompatActivity {
 //        });
 //        queue.add(stringRequest);
 
-        NewsManager newsManager = new NewsManager();
-        News article = new News("nieuws_afbeelding", "aaaaaaaaaaaaaaa", "http://google.com", "NU.nl");
-        newsManager.addArticle(article);
 
-        ((MyApplication)getApplication()).setNewsManager(newsManager);
 
         // Open the start page
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).addToBackStack(null).commit();
