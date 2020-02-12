@@ -19,7 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="@string/vandaag"
+        android:text="Vandaag"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,7 +29,7 @@
         android:id="@+id/weather_windsnelheid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/_6_1_m_s"
+        android:text="6,1 m/s"
         app:layout_constraintBottom_toTopOf="@+id/weather_guideline2"
         app:layout_constraintEnd_toEndOf="@+id/weather_afbeelding_kompas"
         app:layout_constraintStart_toStartOf="@+id/weather_afbeelding_kompas" />
@@ -38,7 +38,7 @@
         android:id="@+id/weather_bewolking"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/_60"
+        android:text="60%"
         app:layout_constraintBottom_toTopOf="@+id/weather_guideline2"
         app:layout_constraintEnd_toEndOf="@+id/weather_afbeelding_bewolking"
         app:layout_constraintStart_toStartOf="@+id/weather_afbeelding_bewolking" />
@@ -48,7 +48,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/_17_7_c"
+        android:text="17,7 °C"
         app:layout_constraintEnd_toEndOf="@+id/weather_gevoelstemperatuur"
         app:layout_constraintStart_toStartOf="@+id/weather_guideline4"
         app:layout_constraintTop_toTopOf="@+id/weather_guideline1" />
@@ -58,7 +58,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/komende_vier_dagen"
+        android:text="Komende vier dagen"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/weather_guideline3" />
@@ -82,7 +82,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/_17_5_c"
+        android:text="17,5 °C"
         android:textColor="@color/colorPrimary"
         app:layout_constraintStart_toStartOf="@+id/weather_guideline4"
         app:layout_constraintTop_toBottomOf="@+id/weather_temperatuur" />
