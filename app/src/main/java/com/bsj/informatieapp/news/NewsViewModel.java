@@ -6,10 +6,13 @@ import android.arch.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 
+//https://medium.com/@elye.project/understanding-live-data-made-simple-a820fcd7b4d0
+
 public class NewsViewModel extends ViewModel {
     private MutableLiveData<ArrayList<News>> newsArticles;
 
-    LiveData<ArrayList<News>> getAllNewsArticles(){
+
+    public LiveData<ArrayList<News>> getAllNewsArticles(){
         checkIfNewsLoaded();
         return newsArticles;
     }
