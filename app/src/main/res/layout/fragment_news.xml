@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -20,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
         android:background="#00000000"
         android:text="Lees meer..."
         app:layout_constraintBottom_toBottomOf="parent"
@@ -48,31 +49,27 @@
         app:layout_constraintBottom_toTopOf="@+id/news_guideline1"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <LinearLayout
-        android:id="@+id/news_linearLayout_lokaal"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/news_recyclerview_landelijk"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/news_readmore_landelijk"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/news_guideline1"
+        tools:listitem="@layout/adapter_view_news" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/news_recyclerview_lokaal"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/news_readmore_lokaal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/news_lokaal">
+        app:layout_constraintTop_toBottomOf="@+id/news_lokaal"
+        tools:listitem="@layout/adapter_view_news">
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/news_linearLayout_landelijk"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="8dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/news_readmore_landelijk"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/news_guideline1"></LinearLayout>
+    </android.support.v7.widget.RecyclerView>
 
     <android.support.constraint.Guideline
         android:id="@+id/news_guideline1"
