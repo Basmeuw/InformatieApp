@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -24,6 +25,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
+    <com.github.mikephil.charting.charts.CombinedChart
+        android:id="@+id/combinedChart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/weather_guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/weather_button_temperatuur"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/weather_guideline2" />
 
     <TextView
         android:id="@+id/weather_windsnelheid"
@@ -125,9 +139,9 @@
         android:id="@+id/weather_button_temperatuur"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/weather_afbeelding_temperatuur"
+        app:layout_constraintBottom_toTopOf="@+id/weather_button_neerslag"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/weather_guideline2" />
 
@@ -135,21 +149,19 @@
         android:id="@+id/weather_button_neerslag"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
         android:background="@drawable/weather_afbeelding_neerslag"
         app:layout_constraintBottom_toTopOf="@+id/weather_guideline3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/weather_button_temperatuur"
-        app:layout_constraintVertical_bias="0.857" />
+        app:layout_constraintTop_toBottomOf="@+id/weather_button_temperatuur" />
 
     <android.support.constraint.Guideline
         android:id="@+id/weather_guideline3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.39671683" />
+        app:layout_constraintGuide_begin="290dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/weather_guideline5"

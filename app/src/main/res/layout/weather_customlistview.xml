@@ -4,6 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <com.github.mikephil.charting.charts.CombinedChart
+        android:id="@+id/chart1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
     <TextView
         android:id="@+id/weather_customlistview_date"
         android:layout_width="wrap_content"

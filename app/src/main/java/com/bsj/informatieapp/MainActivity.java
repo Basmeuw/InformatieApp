@@ -11,6 +11,7 @@ import com.bsj.informatieapp.events.EventsFragment;
 import com.bsj.informatieapp.news.News;
 import com.bsj.informatieapp.news.NewsFragment;
 import com.bsj.informatieapp.news.NewsManager;
+import com.bsj.informatieapp.weather.WeatherFragment;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                             item.setChecked(true);
                             break;
                         case R.id.nav_events:
-                            selectedFragment = new EventsFragment();
+                            selectedFragment = new WeatherFragment();
                             item.setChecked(true);
                             break;
                     }
