@@ -81,7 +81,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         final TextView newsText = newsItem.findViewById(R.id.adapter_title);
         final TextView newsSource = newsItem.findViewById(R.id.adapter_source);
         final WebView webView = view.findViewById(R.id.home_webView);
-//
+///
         NewsViewModel model = ViewModelProviders.of(requireActivity()).get(NewsViewModel.class);
         model.getAllNewsArticles(getContext()).observe(this,news -> {
             newsText.setText(news[0].title);
