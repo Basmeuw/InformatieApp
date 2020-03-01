@@ -29,12 +29,12 @@ public class NewsListAdapter extends ArrayAdapter<News> {
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
 //        return super.getView(position, convertView, parent);
-        String imageFilename = getItem(position).getImageFilename();
-        String title = getItem(position).getTitle();
-        String link = getItem(position).getLink();
-        String source = getItem(position).getSource();
+      //  String imageFilename = getItem(position).getImageFilename();
+     //   String title = getItem(position).getTitle();
+     //   String link = getItem(position).getLink();
+     //   String source = getItem(position).getSource();
 
-        News article = new News(imageFilename, title, link, source);
+        //News article = new News(imageFilename, title, link, source);
 
         LayoutInflater inflater = LayoutInflater.from(context);
         convertView = inflater.inflate(resource, parent, false);
@@ -42,8 +42,8 @@ public class NewsListAdapter extends ArrayAdapter<News> {
         TextView titleTextView = (TextView) convertView.findViewById(R.id.adapter_title);
         TextView sourceTextView = (TextView) convertView.findViewById(R.id.adapter_source);
 
-        titleTextView.setText(title);
-        sourceTextView.setText(source);
+        //titleTextView.setText(title);
+    //    sourceTextView.setText(source);
 
         return convertView;
     }

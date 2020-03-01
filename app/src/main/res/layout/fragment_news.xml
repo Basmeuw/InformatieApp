@@ -9,10 +9,10 @@
         android:id="@+id/news_readmore_lokaal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="8dp"
         android:layout_marginBottom="8dp"
         android:background="#00000000"
-        android:text="Lees_meer..."
+        android:text="LEES MEER..."
         app:layout_constraintBottom_toTopOf="@+id/news_landelijk"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -77,6 +77,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.62" />
+
+    <WebView
+        android:id="@+id/news_webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.111">
+
+    </WebView>
 
 
 </android.support.constraint.ConstraintLayout>

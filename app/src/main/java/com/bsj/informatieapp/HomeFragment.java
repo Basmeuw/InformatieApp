@@ -47,17 +47,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         Button newsReadMore = v.findViewById(R.id.home_newsReadMore);
         newsReadMore.setOnClickListener(this);
 
-        newsViewModel = ViewModelProviders.of(this).get(NewsViewModel.class);
+        //newsViewModel = ViewModelProviders.of(this).get(NewsViewModel.class);
 
-        newsViewModel.getAllNewsArticles().observe(getViewLifecycleOwner(), new Observer<ArrayList<News>>() {
-            @Override
-            public void onChanged(@Nullable ArrayList<News> newsArticles) {
-                News mostImportant = newsArticles.get(0);
-                newsText.setText(mostImportant.getTitle());
-                newsSource.setText(mostImportant.getSource());
-//                newsItem.setOnClickListener(this);
-            }
-        });
+//        newsViewModel.getAllNewsArticles().observe(getViewLifecycleOwner(), new Observer<ArrayList<News>>() {
+//            @Override
+//            public void onChanged(@Nullable ArrayList<News> newsArticles) {
+//                News mostImportant = newsArticles.get(0);
+//                newsText.setText(mostImportant.getTitle());
+//                newsSource.setText(mostImportant.getSource());
+////                newsItem.setOnClickListener(this);
+//            }
+//        });
 
 
         // News handling

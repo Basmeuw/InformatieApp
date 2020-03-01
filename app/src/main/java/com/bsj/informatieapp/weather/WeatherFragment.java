@@ -1,18 +1,28 @@
 package com.bsj.informatieapp.weather;
 
+import android.app.Activity;
+import android.arch.lifecycle.ViewModelProvider;
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import android.graphics.Color;
+import android.widget.ImageView;
+import android.widget.TextView;
+
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import com.bsj.informatieapp.DatabaseController;
 import com.github.mikephil.charting.charts.CombinedChart;
 import com.github.mikephil.charting.charts.CombinedChart.DrawOrder;
 import com.github.mikephil.charting.components.AxisBase;
@@ -34,22 +44,62 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import com.bsj.informatieapp.R;
 
+import org.w3c.dom.Text;
+
 public class WeatherFragment extends Fragment {
 
     private CombinedChart combinedChart;
     private View view;
+    private Context activity;
+    private ArrayList<String> dates = new ArrayList<>();
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_weather, container, false);
 
-        initializeChart();
+
+        WeatherViewModel model = ViewModelProviders.of(requireActivity()).get(WeatherViewModel.class);
+        model.getWeather(getContext()).observe(this, weather -> {
+            setupRecyclerView(weather);
+            initializeChart(weather);
+            initializeView(weather);
+        });
 
         return view;
     }
 
-    private void initializeChart(){
+    private void initializeView(Weather[] weather){
+        TextView currentTemp = view.findViewById(R.id.weather_temperatuur);
+        TextView feelTemp = view.findViewById(R.id.weather_gevoelstemperatuur);
+        TextView windSpeed = view.findViewById(R.id.weather_windsnelheid);
+        TextView clouds = view.findViewById(R.id.weather_bewolking);
+        ImageView kompas = view.findViewById(R.id.weather_afbeelding_kompasnaald);
+
+        currentTemp.setText(weather[0].temp - 273 + "\u00B0" + "C");
+        feelTemp.setText(weather[0].feelTemp - 273 + "\u00B0" + "C");
+        windSpeed.setText(weather[0].windSpeed + "m/s");
+        clouds.setText(weather[0].clouds + "%");
+        kompas.setRotation(weather[0].windDirection);
+
+    }
+
+    private void setupRecyclerView(Weather[] weather){
+        RecyclerView recyclerView = view.findViewById(R.id.weather_recyclerview_komend);
+         WeatherRecyclerViewAdapter adapter = new WeatherRecyclerViewAdapter(weather,this.getContext());
+               recyclerView.setAdapter(adapter);
+         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+    }
+
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+
+        this.activity = context;
+
+    }
+
+    private void initializeChart(Weather[] weather){
 
 
 
@@ -61,8 +111,8 @@ public class WeatherFragment extends Fragment {
 
         setAxis();
         CombinedData combinedData = new CombinedData();
-        combinedData.setData(generateLineData());
-        combinedData.setData(generateBarData());
+        combinedData.setData(generateLineData(weather));
+        combinedData.setData(generateBarData(weather));
 
         combinedChart.setData(combinedData);
         combinedChart.invalidate();
@@ -98,39 +148,27 @@ public class WeatherFragment extends Fragment {
     }
 
     //haal informatie uit de database voor de data
-    private ArrayList<Entry> getLineEntriesData(ArrayList<Entry> entries){
-        entries.add(new Entry(0, 10));
-        entries.add(new Entry(1, 12));
-        entries.add(new Entry(2, 13));
-        entries.add(new Entry(3, 12));
-        entries.add(new Entry(4, 10));
-        entries.add(new Entry(5, 8));
-        entries.add(new Entry(6, 3));
-        entries.add(new Entry(7, 5));
-        entries.add(new Entry(8, 9));
+    private ArrayList<Entry> getLineEntriesData(ArrayList<Entry> entries, Weather[] weather){
+        for(int j = 0; j < 9; j++){
+            entries.add(new Entry(j, weather[j].temp - 273));
+        }
 
 
         return entries;
     }
 
-    private ArrayList<BarEntry> getBarEnteries(ArrayList<BarEntry> entries){
-        entries.add(new BarEntry(0, 0));
-        entries.add(new BarEntry(1, 0));
-        entries.add(new BarEntry(2, 0.24f));
-        entries.add(new BarEntry(3, 0.75f));
-        entries.add(new BarEntry(4, 1));
-        entries.add(new BarEntry(5, 0));
-        entries.add(new BarEntry(6, 0.57f));
-        entries.add(new BarEntry(7, 1.5f));
-        entries.add(new BarEntry(8, 0.78f));
+    private ArrayList<BarEntry> getBarEnteries(ArrayList<BarEntry> entries, Weather[] weather){
+        for(int j = 0; j < 9; j++){
+            entries.add(new BarEntry(j, weather[j].rain));
+        }
         return  entries;
     }
 
-    private LineData generateLineData(){
+    private LineData generateLineData(Weather[] weather){
         LineData lineData = new LineData();
 
         ArrayList<Entry> entries = new ArrayList<>();
-        entries = getLineEntriesData(entries);
+        entries = getLineEntriesData(entries, weather);
 
         LineDataSet lineDataSet = new LineDataSet(entries, "temperatuur");
 
@@ -151,9 +189,9 @@ public class WeatherFragment extends Fragment {
         return lineData;
     }
 
-    private BarData generateBarData(){
+    private BarData generateBarData(Weather[] weather){
         ArrayList<BarEntry> entries = new ArrayList<BarEntry>();
-        entries = getBarEnteries(entries);
+        entries = getBarEnteries(entries, weather);
 
         BarDataSet barDataSet = new BarDataSet(entries, "Regen");
         barDataSet.setColors(Color.rgb(0,0,255));
