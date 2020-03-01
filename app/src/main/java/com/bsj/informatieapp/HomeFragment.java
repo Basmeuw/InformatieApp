@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                     webView.setVisibility(View.VISIBLE);
                 }
             });
-        });//
+        });////
 
 
         ImageView newsImage = newsItem.findViewById(R.id.adapter_thumbnail);
