@@ -131,7 +131,21 @@
         app:layout_constraintEnd_toStartOf="@+id/TrafficLayout"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <ImageView
+            android:id="@+id/home_weather_afbeelding"
+            android:layout_width="106dp"
+            android:layout_height="95dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="28dp"
+            android:layout_marginBottom="36dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/weatherLayoutHeader"
+            app:layout_constraintVertical_bias="0.6"
+            app:srcCompat="@drawable/weather_icon" />
 
         <TextView
             android:id="@+id/weatherLayoutHeader"
@@ -144,6 +158,35 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/home_temp"
+            android:layout_width="50dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="83dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="18dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toTopOf="@+id/home_rain"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/home_weather_afbeelding"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/home_rain"
+            android:layout_width="50dp"
+            android:layout_height="33dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="52dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/home_weather_afbeelding"
+            app:layout_constraintTop_toBottomOf="@+id/home_temp" />
+
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.Guideline
@@ -159,5 +202,11 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.7" />
+
+    <WebView
+        android:id="@+id/home_webView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
 </android.support.constraint.ConstraintLayout>

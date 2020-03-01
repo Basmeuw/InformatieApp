@@ -27,27 +27,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNav.setOnNavigationItemSelectedListener(navListener);
         bottomNav.setSelectedItemId(R.id.nav_start);
 
-        //
-//        RequestQueue queue = Volley.newRequestQueue(this);
-//        String url ="http://schondeln.eitilop-bali.nl/get.php?category[0]=weather&category[1]=traffic";
-//        //136.144.231.50
-//        //http://schondeln.eitilop-bali.nl/get.php?category[0]=weather&category[1]=traffic
-//        Log.e("customdebug", "test");
-//        JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null,
-//                new Response.Listener<JSONArray>() {
-//                    @Override
-//                    public void onResponse(JSONArray response) {
-//                        // Display the first 500 characters of the response string.
-//                        Log.e("customdebug", "Response is: "+ response.toString());
-//                    }
-//                }, new Response.ErrorListener() {
-//            @Override
-//            public void onErrorResponse(VolleyError error) {
-//                error.printStackTrace();
-//                Log.e("customdebug", "Mission failed! We'll get em next time.");
-//            }
-//        });
-//        queue.add(stringRequest);
 
 
 

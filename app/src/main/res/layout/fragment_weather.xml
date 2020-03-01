@@ -185,7 +185,7 @@
         app:layout_constraintGuide_percent="0.23392613" />
 
     <ImageView
-        android:id="@+id/weather_afbeelding_vandaag"
+        android:id="@+id/home_weather_afbeelding"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
