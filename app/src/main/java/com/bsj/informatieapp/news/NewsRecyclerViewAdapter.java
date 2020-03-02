@@ -1,5 +1,6 @@
 package com.bsj.informatieapp.news;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -16,18 +17,25 @@ import android.widget.TextView;
 
 import com.bsj.informatieapp.R;
 import com.bsj.informatieapp.weather.WeatherRecyclerViewAdapter;
+import com.squareup.picasso.Picasso;
 
 public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder> {
 
     private News[] news;
     private Button[] buttons;
     private WebView webView;
+    private Context context;
 
-    public NewsRecyclerViewAdapter(News[] news, Button[] buttons, WebView webView){
+    public NewsRecyclerViewAdapter(News[] news, Button[] buttons, WebView webView, Context context){
         this.news = news;
         this.webView = webView;
         this.buttons = buttons;
+        this.context = context;
     }
+
+
+
+
 
     @NonNull
     @Override
@@ -45,6 +53,7 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsRecyclerVi
 
             viewHolder.title.setText(news[i].title);
             viewHolder.source.setText(news[i].krant);
+            Picasso.with(context).load(news[i].imageLink).into(viewHolder.image);
             viewHolder.constraintLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

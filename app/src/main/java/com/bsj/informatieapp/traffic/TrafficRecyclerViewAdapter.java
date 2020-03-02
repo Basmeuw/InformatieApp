@@ -1,5 +1,7 @@
 package com.bsj.informatieapp.traffic;
 
+import android.graphics.Color;
+import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
@@ -46,6 +48,13 @@ public class TrafficRecyclerViewAdapter extends RecyclerView.Adapter<TrafficRecy
         viewHolder.distance.setText(traffic[i].distance / 1000 + "km");
         viewHolder.delay.setText(traffic[i].delay / 60 + "m");
         viewHolder.description.setText(traffic[i].description);
+        if(traffic[i].roadType.equals("aWegen")){
+            viewHolder.road.setBackgroundColor(Color.RED);
+        } else if(traffic[i].roadType.equals("nWegen")){
+            viewHolder.road.setBackgroundColor(Color.YELLOW);
+        } else{
+            viewHolder.road.setBackgroundColor(Color.TRANSPARENT);
+        }
 
     }
 

@@ -30,6 +30,7 @@ import com.bsj.informatieapp.traffic.TrafficFragment;
 import com.bsj.informatieapp.traffic.TrafficViewModel;
 import com.bsj.informatieapp.weather.WeatherFragment;
 import com.bsj.informatieapp.weather.WeatherViewModel;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
 
@@ -112,11 +113,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         final TextView newsText = newsItem.findViewById(R.id.adapter_title);
         final TextView newsSource = newsItem.findViewById(R.id.adapter_source);
         final WebView webView = view.findViewById(R.id.home_webView);
+        ImageView newsImage = newsItem.findViewById(R.id.adapter_thumbnail);
 ///
         NewsViewModel model = ViewModelProviders.of(requireActivity()).get(NewsViewModel.class);
         model.getAllNewsArticles(getContext()).observe(this,news -> {
             newsText.setText(news[0].title);
             newsSource.setText(news[0].krant);
+            Picasso.with(this.getContext()).load(news[0].imageLink).into(newsImage);
             newsItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -128,7 +131,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         });///////
 
 
-        ImageView newsImage = newsItem.findViewById(R.id.adapter_thumbnail);
+
+
 
         Button newsReadMore = view.findViewById(R.id.home_newsReadMore);
         newsReadMore.setOnClickListener(this);

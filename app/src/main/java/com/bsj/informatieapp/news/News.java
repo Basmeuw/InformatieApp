@@ -1,5 +1,10 @@
 package com.bsj.informatieapp.news;
 
+import android.content.Context;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,6 +32,7 @@ public class News {
 
         return newsArray;
     }
+
 
 
 //    public News(String imageFilename, String title, String link, String source) {
