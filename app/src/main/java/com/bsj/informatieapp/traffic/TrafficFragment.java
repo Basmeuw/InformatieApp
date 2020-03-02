@@ -27,7 +27,8 @@ public class TrafficFragment extends Fragment {
 
     private void initializeRecyclerView(){
         TrafficViewModel model = ViewModelProviders.of(requireActivity()).get(TrafficViewModel.class);
-        model.getAllTraffic(getContext()).observe(this,traffic -> {
+
+        model.getTraffic(getContext()).observe(this,traffic -> {
             RecyclerView recyclerView = view.findViewById(R.id.traffic_recyclerview);
             TrafficRecyclerViewAdapter adapter = new TrafficRecyclerViewAdapter(traffic);
             recyclerView.setAdapter(adapter);

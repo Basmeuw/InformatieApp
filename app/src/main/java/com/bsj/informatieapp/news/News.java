@@ -1,5 +1,8 @@
 package com.bsj.informatieapp.news;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class News {
 
     public String title;
@@ -10,6 +13,20 @@ public class News {
     public String pubDate;
     public String category;
     public String krant;
+
+    public static News[] filterNews(News[] news, String filter){
+        List<News> newsList = new ArrayList<News>();
+        for(News newsItem : news){
+
+            if(newsItem.category.equals(filter)){
+                newsList.add(newsItem);
+            }
+        }
+        News[] newsArray = new News[newsList.size()];
+        newsArray = newsList.toArray(newsArray);
+
+        return newsArray;
+    }
 
 
 //    public News(String imageFilename, String title, String link, String source) {

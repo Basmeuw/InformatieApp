@@ -19,10 +19,14 @@
 
     <TextView
         android:id="@+id/traffic_eindesegment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="82dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="3dp"
+        android:autoText="false"
         android:text="Einde segment"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/traffic_beschrijving"
         app:layout_constraintStart_toStartOf="@+id/traffic_guideline3"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -67,10 +71,16 @@
 
     <TextView
         android:id="@+id/traffic_startsegment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_width="77dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="3dp"
+        android:autoText="false"
         android:text="Start segment"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/traffic_beschrijving"
+        app:layout_constraintEnd_toStartOf="@+id/traffic_pijtlje"
         app:layout_constraintStart_toStartOf="@+id/traffic_guideline2"
         app:layout_constraintTop_toTopOf="parent" />
 

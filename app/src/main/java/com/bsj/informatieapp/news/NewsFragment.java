@@ -42,10 +42,16 @@ public class NewsFragment extends Fragment {
     }
 
     private void setupRecyclerView(News[] news){
-        RecyclerView recyclerView = view.findViewById(R.id.news_recyclerview_lokaal);
-        NewsRecyclerViewAdapter adapter = new NewsRecyclerViewAdapter(news, leesMeerButtons, webView);
-        recyclerView.setAdapter(adapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        RecyclerView recyclerViewLokaal = view.findViewById(R.id.news_recyclerview_lokaal);
+        NewsRecyclerViewAdapter adapterLokaal = new NewsRecyclerViewAdapter(News.filterNews(news, "lokaal"), leesMeerButtons, webView);
+        recyclerViewLokaal.setAdapter(adapterLokaal);
+        recyclerViewLokaal.setLayoutManager(new LinearLayoutManager(this.getContext()));
+
+        RecyclerView recyclerViewAlgemeen = view.findViewById(R.id.news_recyclerview_landelijk);
+        NewsRecyclerViewAdapter adapterAlgemeen = new NewsRecyclerViewAdapter(News.filterNews(news, "algemeen"), leesMeerButtons, webView);
+        recyclerViewAlgemeen.setAdapter(adapterAlgemeen);
+        recyclerViewAlgemeen.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
 
     }

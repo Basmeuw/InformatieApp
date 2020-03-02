@@ -20,20 +20,16 @@ import org.json.JSONArray;
 public class TrafficViewModel extends ViewModel {
     private MutableLiveData<Traffic[]> traffic;
 
-    public LiveData<
-            Traffic[]> getAllTraffic(Context context) {
-        checkIfNewsLoaded(context);
+    public LiveData<Traffic[]> getTraffic(Context context) {
+        if(traffic == null){
+            traffic = new MutableLiveData<>();
+            loadTraffic(context);
+        }
         return traffic;
     }
 
-    private void checkIfNewsLoaded(Context context) {
-        if (traffic == null) {
-            traffic = new MutableLiveData<>();
-            loadNews(context);
-        }
-    }
 
-    private void loadNews(Context context) {
+    private void loadTraffic(Context context) {
         RequestQueue queue = Volley.newRequestQueue(context);
         String url = "http://schondeln.eitilop-bali.nl/get.php?category[0]=Traffic";
 

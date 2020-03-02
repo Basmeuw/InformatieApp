@@ -31,7 +31,7 @@ public class TrafficRecyclerViewAdapter extends RecyclerView.Adapter<TrafficRecy
     @NonNull
     @Override
     public TrafficViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_view_news, viewGroup, false);
+        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_view_traffic, viewGroup, false);
         TrafficViewHolder viewHolder = new TrafficViewHolder(view);
 
         return viewHolder;
@@ -39,11 +39,12 @@ public class TrafficRecyclerViewAdapter extends RecyclerView.Adapter<TrafficRecy
 
     @Override
     public void onBindViewHolder(@NonNull TrafficViewHolder viewHolder, int i) {
-        viewHolder.wegType.setText(traffic[i].roadType);
+
+        viewHolder.road.setText(traffic[i].road);
         viewHolder.startSegment.setText(traffic[i].fromLoc);
         viewHolder.endSegment.setText(traffic[i].toLoc);
-        viewHolder.distance.setText(traffic[i].distance);
-        viewHolder.delay.setText(traffic[i].delay);
+        viewHolder.distance.setText(traffic[i].distance / 1000 + "km");
+        viewHolder.delay.setText(traffic[i].delay / 60 + "m");
         viewHolder.description.setText(traffic[i].description);
 
     }
@@ -57,7 +58,7 @@ public class TrafficRecyclerViewAdapter extends RecyclerView.Adapter<TrafficRecy
 
     public class TrafficViewHolder extends RecyclerView.ViewHolder{
 
-        TextView wegType;
+        TextView road;
         TextView startSegment;
         TextView endSegment;
         TextView distance;
@@ -67,7 +68,7 @@ public class TrafficRecyclerViewAdapter extends RecyclerView.Adapter<TrafficRecy
         public TrafficViewHolder(@NonNull View itemView){
             super(itemView);
 
-            wegType = itemView.findViewById(R.id.traffic_autoweg);
+            road = itemView.findViewById(R.id.traffic_autoweg);
             startSegment = itemView.findViewById(R.id.traffic_startsegment);
             endSegment = itemView.findViewById(R.id.traffic_eindesegment);
             distance = itemView.findViewById(R.id.traffic_kilometer);

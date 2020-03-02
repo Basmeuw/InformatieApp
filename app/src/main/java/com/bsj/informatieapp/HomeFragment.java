@@ -53,7 +53,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         initializeWeather();
         initializeNews();
-        initializeFile();
+        initializeTraffic();
 
         //newsViewModel = ViewModelProviders.of(this).get(NewsViewModel.class);
 
@@ -78,7 +78,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         return view;
     }
 
-    private void initializeFile(){
+    private void initializeTraffic(){
         final ConstraintLayout trafficItem = view.findViewById(R.id.TrafficLayout);
         final TextView road = view.findViewById(R.id.home_file_weg);
         final TextView time = view.findViewById(R.id.home_file_time);
@@ -86,7 +86,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
 
         TrafficViewModel model = ViewModelProviders.of(requireActivity()).get(TrafficViewModel.class);
-        model.getAllTraffic(getContext()).observe(this,traffic -> {
+        model.getTraffic(getContext()).observe(this,traffic -> {
             if(traffic.length > 0){
                 road.setText(traffic[0].road);
                 time.setText(traffic[0].delay / 60 + " min");
