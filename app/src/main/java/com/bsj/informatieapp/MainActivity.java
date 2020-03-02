@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
                             item.setChecked(true);
                             break;
                         case R.id.nav_events:
-                            selectedFragment = new WeatherFragment();
+                            selectedFragment = new EventsFragment();
                             item.setChecked(true);
                             break;
                     }

@@ -26,6 +26,8 @@ import com.bsj.informatieapp.news.News;
 import com.bsj.informatieapp.news.NewsFragment;
 import com.bsj.informatieapp.news.NewsManager;
 import com.bsj.informatieapp.news.NewsViewModel;
+import com.bsj.informatieapp.traffic.TrafficFragment;
+import com.bsj.informatieapp.traffic.TrafficViewModel;
 import com.bsj.informatieapp.weather.WeatherFragment;
 import com.bsj.informatieapp.weather.WeatherViewModel;
 
@@ -51,6 +53,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
         initializeWeather();
         initializeNews();
+        initializeFile();
 
         //newsViewModel = ViewModelProviders.of(this).get(NewsViewModel.class);
 
@@ -73,6 +76,34 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
 
         return view;
+    }
+
+    private void initializeFile(){
+        final ConstraintLayout trafficItem = view.findViewById(R.id.TrafficLayout);
+        final TextView road = view.findViewById(R.id.home_file_weg);
+        final TextView time = view.findViewById(R.id.home_file_time);
+        final TextView length = view.findViewById(R.id.home_file_length);
+
+
+        TrafficViewModel model = ViewModelProviders.of(requireActivity()).get(TrafficViewModel.class);
+        model.getAllTraffic(getContext()).observe(this,traffic -> {
+            if(traffic.length > 0){
+                road.setText(traffic[0].road);
+                time.setText(traffic[0].delay / 60 + " min");
+                length.setText(traffic[0].distance / 1000+ " km");
+                trafficItem.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        fragmentManager.beginTransaction().replace(R.id.fragment_container, new TrafficFragment()).addToBackStack(null).commit();
+                    }
+                });
+            }
+            else{
+                road.setText("Geen file");
+            }
+
+        });
+
     }
 
     private void initializeNews(){

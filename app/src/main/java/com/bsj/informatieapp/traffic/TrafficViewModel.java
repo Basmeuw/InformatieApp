@@ -1,4 +1,4 @@
-package com.bsj.informatieapp.events;
+package com.bsj.informatieapp.traffic;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
@@ -12,30 +12,30 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.Volley;
-import com.bsj.informatieapp.news.News;
+import com.bsj.informatieapp.events.Event;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 
-public class EventViewModel extends ViewModel {
+public class TrafficViewModel extends ViewModel {
+    private MutableLiveData<Traffic[]> traffic;
 
-    private MutableLiveData<Event[]> events;
-
-    public LiveData<Event[]> getAllEvents(Context context) {
+    public LiveData<
+            Traffic[]> getAllTraffic(Context context) {
         checkIfNewsLoaded(context);
-        return events;
+        return traffic;
     }
 
     private void checkIfNewsLoaded(Context context) {
-        if (events == null) {
-            events = new MutableLiveData<>();
+        if (traffic == null) {
+            traffic = new MutableLiveData<>();
             loadNews(context);
         }
     }
 
     private void loadNews(Context context) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://schondeln.eitilop-bali.nl/get.php?category[0]=Event";
+        String url = "http://schondeln.eitilop-bali.nl/get.php?category[0]=Traffic";
 
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {
@@ -44,8 +44,8 @@ public class EventViewModel extends ViewModel {
 
                         Gson gson = new Gson();
                         Log.e("customdebug", response.toString());
-                        Event[] event = gson.fromJson(response.toString(), Event[].class);
-                        events.postValue(event);
+                        Traffic[] trafficArray = gson.fromJson(response.toString(), Traffic[].class);
+                        traffic.postValue(trafficArray);
                         //Log.e("customdebug", newsArticles.getValue()[0].title);
 
                     }
@@ -58,6 +58,4 @@ public class EventViewModel extends ViewModel {
         });
         queue.add(stringRequest);
     }
-
-
 }
