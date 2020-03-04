@@ -19,7 +19,7 @@ public class Weather{
     public int clouds;
     public float rain;
     public String date;
-    public boolean snow;
+    public boolean snow;//
 
 
 
