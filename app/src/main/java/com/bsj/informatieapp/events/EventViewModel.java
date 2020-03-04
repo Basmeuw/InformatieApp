@@ -35,7 +35,7 @@ public class EventViewModel extends ViewModel {
 
     private void loadNews(Context context) {
         RequestQueue queue = Volley.newRequestQueue(context);
-        String url = "http://schondeln.eitilop-bali.nl/get.php?category[0]=Event";
+        String url = "http://schondeln.eitilop-bali.nl/get.php?category[0]=Events";
 
         JsonArrayRequest stringRequest = new JsonArrayRequest(Request.Method.GET, url, null,
                 new Response.Listener<JSONArray>() {

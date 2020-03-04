@@ -21,6 +21,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.bsj.informatieapp.events.EventRecyclerView;
+import com.bsj.informatieapp.events.EventViewModel;
 import com.bsj.informatieapp.events.EventsFragment;
 import com.bsj.informatieapp.news.News;
 import com.bsj.informatieapp.news.NewsFragment;
@@ -55,6 +57,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         initializeWeather();
         initializeNews();
         initializeTraffic();
+        initializeEvents();
 
         //newsViewModel = ViewModelProviders.of(this).get(NewsViewModel.class);
 
@@ -77,6 +80,32 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
 
 
         return view;
+    }
+
+    private void initializeEvents(){
+        final ConstraintLayout eventItem = view.findViewById(R.id.EventsLayout);
+        final View eventsView = view.findViewById(R.id.eventsitem1);
+        final TextView eventDate = eventsView.findViewById(R.id.events_datum);
+        final TextView eventTime = eventsView.findViewById(R.id.events_tijd);
+        final TextView eventLocation = eventsView.findViewById(R.id.events_plaats);
+        final TextView eventName = eventsView.findViewById(R.id.events_evenement);
+        final TextView eventSource = eventsView.findViewById(R.id.events_bron);
+        final TextView eventAttendees = eventsView.findViewById(R.id.events_bezoekersaantal);
+        EventViewModel model = ViewModelProviders.of(requireActivity()).get(EventViewModel.class);
+        model.getAllEvents(getContext()).observe(this, events -> {
+            eventName.setText(events[0].name);
+            eventLocation.setText(events[0].place);
+            eventTime.setText(events[0].startTime + " tot " + events[0].endTime);
+            eventDate.setText(events[0].date);
+            eventAttendees.setText(events[0].name);
+            eventSource.setText(events[0].name);
+            eventItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    fragmentManager.beginTransaction().replace(R.id.fragment_container, new EventsFragment()).addToBackStack(null).commit();
+                }
+            });
+        });
     }
 
     private void initializeTraffic(){
