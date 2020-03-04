@@ -22,20 +22,18 @@ import com.squareup.picasso.Picasso;
 public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsRecyclerViewAdapter.NewsViewHolder> {
 
     private News[] news;
-    private Button[] buttons;
+    private Button leesMeer1;
+    private Button leesMeer2;
     private WebView webView;
     private Context context;
 
-    public NewsRecyclerViewAdapter(News[] news, Button[] buttons, WebView webView, Context context){
+    public NewsRecyclerViewAdapter(News[] news, Button button1, Button button2, WebView webView, Context context){
         this.news = news;
         this.webView = webView;
-        this.buttons = buttons;
+        this.leesMeer1 = button1;
+        this.leesMeer2 = button2;
         this.context = context;
     }
-
-
-
-
 
     @NonNull
     @Override
@@ -60,9 +58,8 @@ public class NewsRecyclerViewAdapter extends RecyclerView.Adapter<NewsRecyclerVi
                     webView.setWebViewClient(new WebViewClient());
                     webView.loadUrl(news[i].link);
                     webView.setVisibility(View.VISIBLE);
-                    for(Button button : buttons){
-                        button.setVisibility(View.INVISIBLE);
-                    }
+                    leesMeer1.setVisibility(View.INVISIBLE);
+                    leesMeer2.setVisibility(View.INVISIBLE);
                 }
             });
 

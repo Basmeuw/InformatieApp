@@ -49,27 +49,34 @@
         app:layout_constraintBottom_toTopOf="@+id/news_guideline1"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/news_recyclerview_landelijk"
+    <include
+        android:id="@+id/news_lokaalItem1"
+        layout="@layout/adapter_view_news"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/news_readmore_landelijk"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/news_guideline1"
-        tools:listitem="@layout/adapter_view_news" />
+        app:layout_constraintTop_toBottomOf="@+id/news_lokaal" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/news_recyclerview_lokaal"
+    <include
+        android:id="@+id/news_lokaalItem2"
+        layout="@layout/adapter_view_news"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/news_readmore_lokaal"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/news_lokaal"
-        tools:listitem="@layout/adapter_view_news">
+        app:layout_constraintTop_toBottomOf="@+id/news_lokaalItem1" />
 
-    </android.support.v7.widget.RecyclerView>
+    <include
+        android:id="@+id/news_landelijkItem1"
+        layout="@layout/adapter_view_news"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/news_guideline1" />
 
     <android.support.constraint.Guideline
         android:id="@+id/news_guideline1"
