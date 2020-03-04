@@ -60,9 +60,9 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
 
     private void setLabels(WeatherViewHolder viewHolder, int i){
         if(i == 0){
-            viewHolder.dateText.setText(DateConverter.newDate(weather[9].time));
+            viewHolder.dateText.setText(weather[9].getDate());
         }else if(i == 1){
-            viewHolder.dateText.setText(DateConverter.newDate(weather[18].time));
+            viewHolder.dateText.setText(weather[18].getDate());
         }
     }
 

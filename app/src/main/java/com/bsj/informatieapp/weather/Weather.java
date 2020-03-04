@@ -18,8 +18,43 @@ public class Weather{
     public String cityName;
     public int clouds;
     public float rain;
-    public String time;
+    public String date;
     public boolean snow;
+
+
+
+    public String getTime(){
+        String newDate = date.substring(11, 16);
+
+        return newDate;
+    }
+
+    public String getDate(){
+        String newDate = "";
+        newDate += date.substring(8,10);
+        newDate += " ";
+        for (int i = 0; i < 12; i++){
+            if(Integer.parseInt(date.substring(5,7)) == i){
+                newDate += months[i];
+            }
+        }
+        return newDate;
+    }
+
+    private String[] months = {
+            "Januari",
+            "Februari",
+            "Maart",
+            "April",
+            "Mei",
+            "Juni",
+            "Juli",
+            "Augustus",
+            "September",
+            "Oktober",
+            "Nomvember",
+            "December"
+    };
 
 
 }

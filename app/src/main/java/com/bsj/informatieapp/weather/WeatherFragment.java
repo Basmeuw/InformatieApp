@@ -109,7 +109,7 @@ public class WeatherFragment extends Fragment {
             CombinedChart.DrawOrder.BAR, CombinedChart.DrawOrder.LINE
         });
 
-        setAxis();
+        setAxis(weather);
         CombinedData combinedData = new CombinedData();
         combinedData.setData(generateLineData(weather));
         combinedData.setData(generateBarData(weather));
@@ -121,7 +121,7 @@ public class WeatherFragment extends Fragment {
 
     }
 
-    private void setAxis(){
+    private void setAxis(Weather[] weather){
         YAxis rightAxis = combinedChart.getAxisRight();
         rightAxis.setDrawGridLines(false);
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
@@ -140,7 +140,8 @@ public class WeatherFragment extends Fragment {
         ValueFormatter valueFormatter = new ValueFormatter(){
             @Override
             public String getFormattedValue(float value) {
-                return times[(int) value % times.length];
+                return weather[(int) value].getTime();
+////                return times[(int) value % times.length];
             }
         };
         xAxis.setValueFormatter(valueFormatter);
@@ -208,7 +209,4 @@ public class WeatherFragment extends Fragment {
         return d;
     }
 
-    protected String[] times = new String[]{
-            "00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00", "24:00"
-    };
 }
