@@ -45,6 +45,20 @@ public class NewsFragment extends Fragment {
         leesMeerButton1 = view.findViewById(R.id.news_readmore_lokaal);
         leesMeerButton2 = view.findViewById(R.id.news_readmore_landelijk);
 
+        leesMeerButton1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsLokaalFragment()).addToBackStack(null).commit();
+            }
+        });
+
+        leesMeerButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getFragmentManager().beginTransaction().replace(R.id.fragment_container, new NewsLandelijkFragment()).addToBackStack(null).commit();
+            }
+        });
+
         NewsViewModel newsViewModel = ViewModelProviders.of(requireActivity()).get(NewsViewModel.class);
         newsViewModel.getAllNewsArticles(getContext()).observe(this, news -> {
             fillNews(news);

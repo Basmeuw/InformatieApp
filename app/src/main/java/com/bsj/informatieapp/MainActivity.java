@@ -8,10 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.bsj.informatieapp.events.EventsFragment;
-import com.bsj.informatieapp.news.News;
 import com.bsj.informatieapp.news.NewsFragment;
-import com.bsj.informatieapp.news.NewsManager;
-import com.bsj.informatieapp.weather.WeatherFragment;
 
 
 public class MainActivity extends AppCompatActivity {

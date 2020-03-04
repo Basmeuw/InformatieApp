@@ -1,7 +1,5 @@
 package com.bsj.informatieapp;
 
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -9,7 +7,6 @@ import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,15 +15,11 @@ import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
-import com.bsj.informatieapp.events.EventRecyclerView;
 import com.bsj.informatieapp.events.EventViewModel;
 import com.bsj.informatieapp.events.EventsFragment;
-import com.bsj.informatieapp.news.News;
 import com.bsj.informatieapp.news.NewsFragment;
-import com.bsj.informatieapp.news.NewsManager;
 import com.bsj.informatieapp.news.NewsViewModel;
 import com.bsj.informatieapp.traffic.TrafficFragment;
 import com.bsj.informatieapp.traffic.TrafficViewModel;
@@ -34,14 +27,9 @@ import com.bsj.informatieapp.weather.WeatherFragment;
 import com.bsj.informatieapp.weather.WeatherViewModel;
 import com.squareup.picasso.Picasso;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
-
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private FragmentManager fragmentManager;
-    private NewsManager newsManager;
     private NewsViewModel newsViewModel;
 
     private View view;
