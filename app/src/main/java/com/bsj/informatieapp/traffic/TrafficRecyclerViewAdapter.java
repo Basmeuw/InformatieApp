@@ -1,5 +1,6 @@
 package com.bsj.informatieapp.traffic;
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.provider.CalendarContract;
 import android.support.annotation.NonNull;
@@ -34,9 +35,8 @@ public class TrafficRecyclerViewAdapter extends RecyclerView.Adapter<TrafficRecy
     @Override
     public TrafficViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_view_traffic, viewGroup, false);
-        TrafficViewHolder viewHolder = new TrafficViewHolder(view);
 
-        return viewHolder;
+        return new TrafficViewHolder(view);
     }
 
     @Override
@@ -65,7 +65,7 @@ public class TrafficRecyclerViewAdapter extends RecyclerView.Adapter<TrafficRecy
 
 
 
-    public class TrafficViewHolder extends RecyclerView.ViewHolder{
+    class TrafficViewHolder extends RecyclerView.ViewHolder{
 
         TextView road;
         TextView startSegment;
@@ -74,7 +74,7 @@ public class TrafficRecyclerViewAdapter extends RecyclerView.Adapter<TrafficRecy
         TextView delay;
         TextView description;
 
-        public TrafficViewHolder(@NonNull View itemView){
+        TrafficViewHolder(@NonNull View itemView){
             super(itemView);
 
             road = itemView.findViewById(R.id.traffic_autoweg);

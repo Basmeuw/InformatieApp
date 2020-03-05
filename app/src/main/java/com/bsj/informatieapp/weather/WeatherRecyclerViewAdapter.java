@@ -22,6 +22,8 @@ import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -31,19 +33,16 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
     private static final String TAG = "WeatherRecyclerViewAdapter";
 
     private Weather[] weather;
-    private Context context;
 
-    public WeatherRecyclerViewAdapter(Weather[] weather, Context context) {
+    public WeatherRecyclerViewAdapter(Weather[] weather) {
         this.weather = weather;
-        this.context = context;
     }
 
     @NonNull
     @Override
     public WeatherViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.adapter_view_weather, viewGroup, false);
-        WeatherViewHolder viewHolder = new WeatherViewHolder(view);
-        return viewHolder;
+        return new WeatherViewHolder(view);
     }
 
     @Override
@@ -79,20 +78,30 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
 
         viewHolder.weatherChart.setData(combinedData);
         viewHolder.weatherChart.invalidate();
+        viewHolder.weatherChart.setDescription(null);
+        viewHolder.weatherChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                //viewHolder.weatherChart.getBarData().setDrawValues(true);
+            }
+
+            @Override
+            public void onNothingSelected() {
+
+            }
+        });
 
         viewHolder.weatherChart.getLegend().setEnabled(false);
     }
 
     private void setAxis(WeatherViewHolder viewHolder){
         YAxis rightAxis = viewHolder.weatherChart.getAxisRight();
-        rightAxis.setDrawGridLines(false);
+        rightAxis.setDrawGridLines(true);
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-        rightAxis.setAxisMaximum(2);
 
         YAxis leftAxis = viewHolder.weatherChart.getAxisLeft();
         leftAxis.setDrawGridLines(false);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-        leftAxis.setAxisMaximum(15);
 
         XAxis xAxis = viewHolder.weatherChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
@@ -112,8 +121,9 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
     private LineData generateLineData(int i){
         LineData lineData = new LineData();
 
+
         ArrayList<Entry> entries = new ArrayList<>();
-        entries = getLineEntriesData(entries, i);
+        getLineEntriesData(entries, i);
 
         LineDataSet lineDataSet = new LineDataSet(entries, "temperatuur");
 
@@ -122,8 +132,9 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
         lineDataSet.setCircleColor(Color.rgb(255,0,0));
         lineDataSet.setCircleRadius(3);
         lineDataSet.setFillColor(Color.rgb(255,0,0));
+        lineDataSet.setHighlightEnabled(false);
         lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        lineDataSet.setDrawValues(true);
+        lineDataSet.setDrawValues(false);
         lineDataSet.setValueTextSize(10f);
         lineDataSet.setValueTextColor(Color.rgb(255, 0, 0));
 
@@ -131,18 +142,21 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
 
         lineData.addDataSet(lineDataSet);
 
+
         return lineData;
     }
 
     private BarData generateBarData(int i){
         ArrayList<BarEntry> entries = new ArrayList<>();
-        entries = getBarEntries(entries, i);
+        getBarEntries(entries, i);
 
         BarDataSet barDataSet = new BarDataSet(entries, "Regen");
         barDataSet.setColors(Color.rgb(0,0,255));
         barDataSet.setValueTextColor(Color.rgb(0, 0, 255));
+        barDataSet.setDrawValues(false);
         barDataSet.setValueTextSize(10f);
         barDataSet.setAxisDependency(YAxis.AxisDependency.RIGHT);
+
 
         float barWidth = 0.45f;
 
@@ -182,19 +196,19 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
         return entries;
     }
 
-    protected String[] times = new String[]{
+    private String[] times = new String[]{
             "00:00", "03:00", "06:00", "09:00", "12:00", "15:00", "18:00", "21:00", "24:00"
     };
 
 
 
-    public class WeatherViewHolder extends  RecyclerView.ViewHolder{
+    static class WeatherViewHolder extends  RecyclerView.ViewHolder{
 
         CombinedChart weatherChart;
         TextView dateText;
         ConstraintLayout constraintLayout;
 
-        public WeatherViewHolder(@NonNull View itemView) {
+        WeatherViewHolder(@NonNull View itemView) {
             super(itemView);
             weatherChart = itemView.findViewById(R.id.weather_customlistview_combinedChart);
             dateText = itemView.findViewById(R.id.weather_customlistview_date);

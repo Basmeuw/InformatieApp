@@ -38,8 +38,10 @@ public class EventRecyclerView extends RecyclerView.Adapter<EventRecyclerView.Ev
         eventViewHolder.eventLocation.setText(events[i].place);
         eventViewHolder.eventTime.setText(events[i].startTime + " tot " + events[i].endTime);
         eventViewHolder.eventDate.setText(events[i].date);
-        eventViewHolder.eventAttendees.setText(events[i].name);
-        eventViewHolder.eventSource.setText(events[i].name);
+        eventViewHolder.eventAttendees.setText(events[i].attendingCount + " bezoekers");
+        eventViewHolder.eventSource.setText(events[i].informationSource);
+        eventViewHolder.eventDay.setText(events[i].getEventDay());
+        eventViewHolder.eventMonth.setText(events[i].getEventMonth());
 
 
     }
@@ -57,6 +59,8 @@ public class EventRecyclerView extends RecyclerView.Adapter<EventRecyclerView.Ev
         TextView eventName;
         TextView eventSource;
         TextView eventAttendees;
+        TextView eventDay;
+        TextView eventMonth;
 
 
         EventViewHolder(@NonNull View itemView) {
@@ -67,6 +71,8 @@ public class EventRecyclerView extends RecyclerView.Adapter<EventRecyclerView.Ev
             eventName = itemView.findViewById(R.id.events_evenement);
             eventSource = itemView.findViewById(R.id.events_bron);
             eventAttendees = itemView.findViewById(R.id.events_bezoekersaantal);
+            eventDay = itemView.findViewById(R.id.events_day);
+            eventMonth = itemView.findViewById(R.id.events_month);
 
 
         }

@@ -117,12 +117,12 @@
 
     <ImageView
         android:id="@+id/weather_afbeelding_kompasnaald"
-        android:layout_width="0dp"
-        android:layout_height="13dp"
+        android:layout_width="23dp"
+        android:layout_height="42dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
+        android:rotation="270"
         app:layout_constraintBottom_toBottomOf="@+id/weather_afbeelding_kompas"
-        app:layout_constraintDimensionRatio="w,3:1"
         app:layout_constraintEnd_toEndOf="@+id/weather_afbeelding_kompas"
         app:layout_constraintStart_toStartOf="@+id/weather_afbeelding_kompas"
         app:layout_constraintTop_toTopOf="@+id/weather_afbeelding_kompas"

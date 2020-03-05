@@ -27,6 +27,8 @@ import com.bsj.informatieapp.weather.WeatherFragment;
 import com.bsj.informatieapp.weather.WeatherViewModel;
 import com.squareup.picasso.Picasso;
 
+import org.w3c.dom.Text;
+
 public class HomeFragment extends Fragment implements View.OnClickListener{
 
     private FragmentManager fragmentManager;
@@ -79,14 +81,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         final TextView eventName = eventsView.findViewById(R.id.events_evenement);
         final TextView eventSource = eventsView.findViewById(R.id.events_bron);
         final TextView eventAttendees = eventsView.findViewById(R.id.events_bezoekersaantal);
+        final TextView eventDay = eventsView.findViewById(R.id.events_day);
+        final TextView eventMonth = eventsView.findViewById(R.id.events_month);
+
         EventViewModel model = ViewModelProviders.of(requireActivity()).get(EventViewModel.class);
         model.getAllEvents(getContext()).observe(this, events -> {
             eventName.setText(events[0].name);
             eventLocation.setText(events[0].place);
             eventTime.setText(events[0].startTime + " tot " + events[0].endTime);
             eventDate.setText(events[0].date);
-            eventAttendees.setText(events[0].name);
-            eventSource.setText(events[0].name);
+            eventAttendees.setText(events[0].attendingCount + " bezoekers");
+            eventSource.setText(events[0].informationSource);
+            eventDay.setText(events[0].getEventDay());
+            eventMonth.setText(events[0].getEventMonth());
             eventItem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

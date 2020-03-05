@@ -86,7 +86,7 @@ public class WeatherFragment extends Fragment {
 
     private void setupRecyclerView(Weather[] weather){
         RecyclerView recyclerView = view.findViewById(R.id.weather_recyclerview_komend);
-         WeatherRecyclerViewAdapter adapter = new WeatherRecyclerViewAdapter(weather,this.getContext());
+         WeatherRecyclerViewAdapter adapter = new WeatherRecyclerViewAdapter(weather);
                recyclerView.setAdapter(adapter);
          recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
@@ -123,14 +123,12 @@ public class WeatherFragment extends Fragment {
 
     private void setAxis(Weather[] weather){
         YAxis rightAxis = combinedChart.getAxisRight();
-        rightAxis.setDrawGridLines(false);
+        rightAxis.setDrawGridLines(true);
         rightAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-        rightAxis.setAxisMaximum(2);
 
         YAxis leftAxis = combinedChart.getAxisLeft();
         leftAxis.setDrawGridLines(false);
         leftAxis.setAxisMinimum(0f); // this replaces setStartAtZero(true)
-        leftAxis.setAxisMaximum(15);
 
         XAxis xAxis = combinedChart.getXAxis();
         xAxis.setPosition(XAxisPosition.BOTTOM);
@@ -141,14 +139,12 @@ public class WeatherFragment extends Fragment {
             @Override
             public String getFormattedValue(float value) {
                 return weather[(int) value].getTime();
-////                return times[(int) value % times.length];
             }
         };
         xAxis.setValueFormatter(valueFormatter);
 
     }
 
-    //haal informatie uit de database voor de data
     private ArrayList<Entry> getLineEntriesData(ArrayList<Entry> entries, Weather[] weather){
         for(int j = 0; j < 9; j++){
             entries.add(new Entry(j, weather[j].temp - 273));
@@ -179,7 +175,7 @@ public class WeatherFragment extends Fragment {
         lineDataSet.setCircleRadius(3);
         lineDataSet.setFillColor(Color.rgb(255,0,0));
         lineDataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);
-        lineDataSet.setDrawValues(true);
+        lineDataSet.setDrawValues(false);
         lineDataSet.setValueTextSize(10f);
         lineDataSet.setValueTextColor(Color.rgb(255, 0, 0));
 
@@ -199,7 +195,7 @@ public class WeatherFragment extends Fragment {
         barDataSet.setValueTextColor(Color.rgb(0, 0, 255));
         barDataSet.setValueTextSize(10f);
         barDataSet.setAxisDependency(YAxis.AxisDependency.RIGHT);
-
+        barDataSet.setDrawValues(false);
         float barWidth = 0.45f;
 
 
