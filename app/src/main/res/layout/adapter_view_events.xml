@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
 
     <Button
-        android:id="@+id/weather_button_neerslag2"
+        android:id="@+id/events_weather_button"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginStart="40dp"
@@ -77,14 +77,14 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline6"
-        app:layout_constraintTop_toBottomOf="@+id/weather_button_neerslag2" />
+        app:layout_constraintTop_toBottomOf="@+id/events_weather_button" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.26034063" />
+        app:layout_constraintGuide_percent="0.26" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline6"
@@ -139,5 +139,18 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.13" />
+
+    <com.github.mikephil.charting.charts.CombinedChart
+        android:id="@+id/events_weather_chart"
+        android:layout_width="183dp"
+        android:layout_height="136dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="1dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/events_bron"
+        app:layout_constraintStart_toEndOf="@+id/events_month"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

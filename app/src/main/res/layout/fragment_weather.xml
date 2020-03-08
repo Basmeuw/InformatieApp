@@ -27,7 +27,7 @@
 
 
     <com.github.mikephil.charting.charts.CombinedChart
-        android:id="@+id/combinedChart"
+        android:id="@+id/events_weather_chart"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"

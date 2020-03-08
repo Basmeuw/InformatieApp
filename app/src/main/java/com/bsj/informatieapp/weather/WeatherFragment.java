@@ -1,7 +1,5 @@
 package com.bsj.informatieapp.weather;
 
-import android.app.Activity;
-import android.arch.lifecycle.ViewModelProvider;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
@@ -10,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,13 +17,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.logging.Logger;
 
-import com.bsj.informatieapp.DatabaseController;
 import com.github.mikephil.charting.charts.CombinedChart;
-import com.github.mikephil.charting.charts.CombinedChart.DrawOrder;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.XAxis.XAxisPosition;
 import com.github.mikephil.charting.components.YAxis;
@@ -37,14 +29,9 @@ import com.github.mikephil.charting.data.CombinedData;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
 import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.IAxisValueFormatter;
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter;
 import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.utils.ColorTemplate;
 
 import com.bsj.informatieapp.R;
-
-import org.w3c.dom.Text;
 
 public class WeatherFragment extends Fragment {
 
@@ -103,7 +90,7 @@ public class WeatherFragment extends Fragment {
 
 
 
-        combinedChart = (CombinedChart) view.findViewById(R.id.combinedChart);
+        combinedChart = (CombinedChart) view.findViewById(R.id.events_weather_chart);
 
         combinedChart.setDrawOrder(new CombinedChart.DrawOrder[]{
             CombinedChart.DrawOrder.BAR, CombinedChart.DrawOrder.LINE
@@ -116,6 +103,7 @@ public class WeatherFragment extends Fragment {
 
         combinedChart.setData(combinedData);
         combinedChart.invalidate();
+        combinedChart.setDescription(null);
 
         combinedChart.getLegend().setEnabled(false);
 
