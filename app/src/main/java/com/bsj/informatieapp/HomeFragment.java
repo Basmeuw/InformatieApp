@@ -76,7 +76,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         return view;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.O)
     @SuppressLint("SetTextI18n")
     private void initializeEvents(Weather[] weather){
         final ConstraintLayout eventItem = view.findViewById(R.id.EventsLayout);
@@ -94,15 +93,51 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
         EventViewModel model = ViewModelProviders.of(requireActivity()).get(EventViewModel.class);
         model.getAllEvents(getContext()).observe(this, events -> {
             assert events != null;
-            eventName.setText(events[0].name);
-            eventLocation.setText(events[0].place);
-            eventTime.setText(events[0].startTime + " tot " + events[0].endTime);
-            eventDate.setText(events[0].date);
-            eventAttendees.setText(events[0].attendingCount + " bezoekers");
-            eventSource.setText(events[0].informationSource);
-            eventDay.setText(events[0].getEventDay());
-            eventMonth.setText(events[0].getEventMonth());
-            initializeEventWeatherChart(events, Weather.weatherDuringEvent(weather, events[1]));
+            eventName.setText(events[1].name);
+            eventLocation.setText(events[1].place);
+            eventTime.setText(events[1].startTime + " tot " + events[1].endTime);
+            eventDate.setText(events[1].date);
+            eventAttendees.setText(events[1].attendingCount + " bezoekers");
+            eventSource.setText(events[1].informationSource);
+            eventDay.setText(events[1].getEventDay());
+            eventMonth.setText(events[1].getEventMonth());
+
+
+
+            Weather[] eventWeather = Weather.weatherDuringEvent(weather, events[1]);
+            if(eventWeather[0] != null){
+                initializeEventWeatherChart(events, eventWeather);
+
+                rainButton.setVisibility(View.VISIBLE);
+
+                rainButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        if(!chartVisible){
+                            weatherChart.setVisibility(View.VISIBLE);
+                            eventName.setVisibility(View.INVISIBLE);
+                            eventLocation.setVisibility(View.INVISIBLE);
+                            eventTime.setVisibility(View.INVISIBLE);
+                            eventDate.setVisibility(View.INVISIBLE);
+                            eventAttendees.setVisibility(View.INVISIBLE);
+                            eventSource.setVisibility(View.INVISIBLE);
+
+                        } else{
+                            weatherChart.setVisibility(View.INVISIBLE);
+                            eventName.setVisibility(View.VISIBLE);
+                            eventLocation.setVisibility(View.VISIBLE);
+                            eventTime.setVisibility(View.VISIBLE);
+                            eventDate.setVisibility(View.VISIBLE);
+                            eventAttendees.setVisibility(View.VISIBLE);
+                            eventSource.setVisibility(View.VISIBLE);
+                        }
+                        chartVisible = !chartVisible;
+
+                    }
+                });
+            }
+
+
 
 
             eventItem.setOnClickListener(new View.OnClickListener() {
@@ -112,31 +147,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener{
                 }
             });
 
-            rainButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if(!chartVisible){
-                        weatherChart.setVisibility(View.VISIBLE);
-                        eventName.setVisibility(View.INVISIBLE);
-                        eventLocation.setVisibility(View.INVISIBLE);
-                        eventTime.setVisibility(View.INVISIBLE);
-                        eventDate.setVisibility(View.INVISIBLE);
-                        eventAttendees.setVisibility(View.INVISIBLE);
-                        eventSource.setVisibility(View.INVISIBLE);
 
-                    } else{
-                        weatherChart.setVisibility(View.INVISIBLE);
-                        eventName.setVisibility(View.VISIBLE);
-                        eventLocation.setVisibility(View.VISIBLE);
-                        eventTime.setVisibility(View.VISIBLE);
-                        eventDate.setVisibility(View.VISIBLE);
-                        eventAttendees.setVisibility(View.VISIBLE);
-                        eventSource.setVisibility(View.VISIBLE);
-                    }
-                    chartVisible = !chartVisible;
-
-                }
-            });
 
         });
     }

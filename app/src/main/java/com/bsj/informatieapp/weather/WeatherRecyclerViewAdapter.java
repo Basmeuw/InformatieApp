@@ -27,15 +27,21 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecyclerViewAdapter.WeatherViewHolder> {
 
     private static final String TAG = "WeatherRecyclerViewAdapter";
 
     private Weather[] weather;
+    private Calendar calendar;
+    private int days = 5;
+    private int dayNumber;
 
     public WeatherRecyclerViewAdapter(Weather[] weather) {
         this.weather = weather;
+        calendar = Calendar.getInstance(TimeZone.getDefault());
     }
 
     @NonNull
@@ -54,14 +60,20 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
 
     @Override
     public int getItemCount() {
-        return 2;
+        return days - 1;
     }
 
     private void setLabels(WeatherViewHolder viewHolder, int i){
-        if(i == 0){
-            viewHolder.dateText.setText(weather[9].getDate());
-        }else if(i == 1){
-            viewHolder.dateText.setText(weather[18].getDate());
+        dayNumber = calendar.get(Calendar.DAY_OF_MONTH) + 1 + i;
+
+        viewHolder.dateText.setText(weather[Weather.findIndex(weather, "00:00", getFormattedDay(dayNumber))].getDate());
+    }
+
+    private String getFormattedDay(int day){
+        if(day < 10){
+            return "0" + day;
+        } else{
+            return String.valueOf(day);
         }
     }
 
@@ -168,31 +180,20 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
     }
 
     private ArrayList<Entry> getLineEntriesData(ArrayList<Entry> entries, int i){
-        Log.d("customdebug","line entries data");
 
         for(int j = 0; j < 9; j++) {
-            if (i == 0) {
-                entries.add(new Entry(j, weather[j + 8].temp - 273));
-            } else if (i == 1) {
-                entries.add(new Entry(j, weather[j + 16].temp - 273));
-            }
-
+            entries.add(new Entry(j,weather[Weather.findIndex(weather, "00:00", getFormattedDay(dayNumber)) + j].temp - 273));
         }
 
         return entries;
-
     }
 
     private ArrayList<BarEntry> getBarEntries(ArrayList<BarEntry> entries, int i){
-        Log.d("customdebug","bar entries data");
-        for(int j = 0; j < 9; j++) {
-            if (i == 0) {
-                entries.add(new BarEntry(j, weather[j + 8].rain));
-            } else if (i == 1) {
-                entries.add(new BarEntry(j, weather[j + 16].rain));
-            }
 
+        for(int j = 0; j < 9; j++) {
+            entries.add(new BarEntry(j,weather[Weather.findIndex(weather, "00:00", getFormattedDay(dayNumber)) + j].rain));
         }
+
         return entries;
     }
 

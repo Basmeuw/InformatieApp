@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.bsj.informatieapp.R;
+import com.bsj.informatieapp.weather.Weather;
 import com.bsj.informatieapp.weather.WeatherRecyclerViewAdapter;
+import com.bsj.informatieapp.weather.WeatherViewModel;
 
 public class EventsFragment extends Fragment {
     View view;
@@ -21,18 +23,22 @@ public class EventsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_events, container, false);
 
-        EventViewModel model = ViewModelProviders.of(requireActivity()).get(EventViewModel.class);
-        model.getAllEvents(getContext()).observe(this, events -> {
-            initializeRecyclerview(events);
+        EventViewModel eventViewModel = ViewModelProviders.of(requireActivity()).get(EventViewModel.class);
+        WeatherViewModel weatherViewModel = ViewModelProviders.of(requireActivity()).get(WeatherViewModel.class);
+        eventViewModel.getAllEvents(getContext()).observe(this, events -> {
+            weatherViewModel.getWeather(getContext()).observe(this, weather -> {
+                initializeRecyclerview(events, weather);
+            });
+
         });
 
         return view;
     }
 
 
-    public void initializeRecyclerview(Event[] events){
+    public void initializeRecyclerview(Event[] events, Weather[] weather){
         RecyclerView recyclerView = view.findViewById(R.id.events_recyclerview);
-        EventRecyclerView adapter = new EventRecyclerView(events);
+        EventRecyclerView adapter = new EventRecyclerView(events, weather);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
