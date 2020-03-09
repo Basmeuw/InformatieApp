@@ -94,12 +94,14 @@ public class WeatherRecyclerViewAdapter extends RecyclerView.Adapter<WeatherRecy
         viewHolder.weatherChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
             @Override
             public void onValueSelected(Entry e, Highlight h) {
-                //viewHolder.weatherChart.getBarData().setDrawValues(true);
+                viewHolder.weatherChart.getBarData().setDrawValues(true);
+                viewHolder.weatherChart.getLineData().setDrawValues(true);
             }
 
             @Override
             public void onNothingSelected() {
-
+                viewHolder.weatherChart.getBarData().setDrawValues(false);
+                viewHolder.weatherChart.getLineData().setDrawValues(false);
             }
         });
 

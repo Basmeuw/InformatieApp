@@ -32,6 +32,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.ValueFormatter;
 
 import com.bsj.informatieapp.R;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 public class WeatherFragment extends Fragment {
 
@@ -106,6 +108,20 @@ public class WeatherFragment extends Fragment {
         combinedChart.setDescription(null);
 
         combinedChart.getLegend().setEnabled(false);
+
+        combinedChart.setOnChartValueSelectedListener(new OnChartValueSelectedListener() {
+            @Override
+            public void onValueSelected(Entry e, Highlight h) {
+                combinedChart.getBarData().setDrawValues(true);
+                combinedChart.getLineData().setDrawValues(true);
+            }
+
+            @Override
+            public void onNothingSelected() {
+                combinedChart.getBarData().setDrawValues(false);
+                combinedChart.getLineData().setDrawValues(false);
+            }
+        });
 
     }
 
